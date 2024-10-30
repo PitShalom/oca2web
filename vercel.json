@@ -1,0 +1,23 @@
+{
+    "version": 2,
+    "builds": [
+      {
+        "src": "myproject/manage.py",
+        "use": "@vercel/python"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/run-automation",
+        "dest": "/myproject/frontend/views.py/run_automation"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "/myproject/manage.py"
+      }
+    ],
+    "env": {
+      "DJANGO_SETTINGS_MODULE": "myproject.settings"
+    }
+  }
+  
