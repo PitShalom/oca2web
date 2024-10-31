@@ -3,7 +3,7 @@ services:
     name: myproject
     env: python
     plan: free
-    buildCommand: "poetry install"
+    buildCommand: "pip install -r requirements.txt"
     startCommand: "gunicorn myproject.wsgi:application"
     envVars:
       - key: DJANGO_SETTINGS_MODULE
