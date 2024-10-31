@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: myproject
+    env: python
+    plan: free  # Pode ajustar para outros planos pagos, se necessário
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn myproject.wsgi:application"
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: myproject.settings
+    routes:
+      - type: rewrite
+        source: /run-automation
+        destination: /myproject/frontend/views.py/run_automation
+      - type: rewrite
+        source: /*
+        destination: /
